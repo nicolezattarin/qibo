@@ -26,14 +26,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
         pip install pytest-cov
-        pip install .[tests,qibotf,qibojit,docs]
+        pip install .[tests,docs]
+        pip install qibotf
+        pip install qibojit
     - name: Install package on Windows
       if: startsWith(matrix.os, 'windows')
       run: |
         python -m pip install --upgrade pip
         pip install pylint
         pip install pytest-cov
-        pip install .[tests,qibojit,docs]
+        pip install .[qibojit,docs,tests]
     - name: Test with pylint
       run: |
         pylint src -E -d E1123,E1120
