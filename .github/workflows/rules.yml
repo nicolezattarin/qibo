@@ -26,9 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pylint
         pip install pytest-cov
-        pip install .[tests,docs]
-        pip install qibotf
-        pip install qibojit
+        pip install .[qibojit,tests,docs]
     - name: Install package on Windows
       if: startsWith(matrix.os, 'windows')
       run: |
