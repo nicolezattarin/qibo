@@ -27,6 +27,10 @@ jobs:
         pip install pylint
         pip install pytest-cov
         pip install .[qibojit,qibotf,docs,tests]
+    - name: Patching numpy for py37 on linux
+      if: startsWith(matrix.os, 'ubuntu') && matrix.python-version == '3.7'
+      run: |
+        pip install -U numpy
     - name: Install package on Windows
       if: startsWith(matrix.os, 'windows')
       run: |
