@@ -29,10 +29,11 @@ jobs:
         pip install .[docs,tests]
         pip install qibotf
         pip install qibojit
-    # - name: Patching numpy for py37 on linux
-    #   if: startsWith(matrix.os, 'ubuntu') && matrix.python-version == '3.7'
-    #   run: |
-    #     pip install -U numpy
+    # patch until this issue is solved https://github.com/numba/numba/issues/7339
+    - name: Fixing numba for py37 on linux
+      if: startsWith(matrix.os, 'ubuntu') && matrix.python-version == '3.7'
+      run: |
+        pip install numba==0.53.1
     - name: Install package on Windows
       if: startsWith(matrix.os, 'windows')
       run: |
